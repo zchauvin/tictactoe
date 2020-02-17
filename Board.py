@@ -5,9 +5,18 @@ class Board:
         self.n: int = n
         self.cells: List[str] = [''] * n * n
     
-    def __str__(self):
-        # TODO: improve board string representation
-        return str(self.cells)
+    def __str__(self) -> str:
+        result = "\n"
+        for i in range(self.n):
+            for j in range(self.n):
+                index = i * self.n + j
+                result += f" {self.cells[index] or index + 1} "
+                if j != self.n - 1:
+                    result += '|'
+            result += "\n"
+            if i != self.n - 1:
+                result += '-' * (4 * self.n - 1) + "\n"
+        return result
     
     def has_player_won(self, lines: List[List[int]], character: str) -> bool:
         for line in lines:
@@ -40,3 +49,6 @@ class Board:
     # A move is valid if it falls within bounds and is not taken
     def is_valid_move(self, i: int) -> bool:
         return i >= 0 and i < self.n * self.n and not self.cells[i]
+    
+    def get_available_cells(self) -> List[int]:
+        return list(filter(lambda i: not self.cells[i], range(self.n * self.n)))
