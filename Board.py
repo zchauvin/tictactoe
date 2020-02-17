@@ -26,8 +26,13 @@ class Board:
         return False
     
     # zero-indexed
-    def set(self, i: int, character: str) -> None:
-        self.cells[i] = character
+    def set(self, cell: int, character: str) -> None:
+        self.cells[cell] = character
+    
+    # zero-indexed
+    def multi_set(self, cells: List[int], character: str) -> None:
+        for cell in cells:
+            self.cells[cell] = character
     
     def get_lines(self) -> List[List[int]]: 
         lines: List[List[int]] = []
