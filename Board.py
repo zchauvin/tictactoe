@@ -18,13 +18,14 @@ class Board:
                 result += '-' * (4 * self.n - 1) + "\n"
         return result
     
-    def has_player_won(self, lines: List[List[int]], character: str) -> bool:
-        for line in lines:
+    def has_player_won(self, character: str) -> bool:
+        for line in self.get_lines():
             # check if all cells in the line match the given character
             if all(map(lambda i: self.cells[i] == character, line)):
                 return True
         return False
     
+    # zero-indexed
     def set(self, i: int, character: str) -> None:
         self.cells[i] = character
     
@@ -52,3 +53,11 @@ class Board:
     
     def get_available_cells(self) -> List[int]:
         return list(filter(lambda i: not self.cells[i], range(self.n * self.n)))
+    
+    def copy(self):
+        b = Board(self.n)
+        b.cells = self.cells.copy()
+        return b
+    
+    def is_full(self):
+        return all(self.cells)

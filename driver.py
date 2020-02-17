@@ -14,16 +14,15 @@ def get_is_human_x() -> bool:
             
 
 def play(is_human_x: bool) -> None:
-    players = [Human('x'), Computer('o')] if is_human_x else [Computer('x'), Human('o')] 
+    players = [Human('x'), Computer('o', 'x')] if is_human_x else [Computer('x', 'o'), Human('o')] 
     board = Board(N)
-    lines = board.get_lines()
     turn = 0
     print(board)
     while turn < N * N:
         player = players[turn % 2]
         board.set(player.get_move(board), player.character)
         print(board)
-        if board.has_player_won(lines, player.character):
+        if board.has_player_won(player.character):
             print(f'Player {player.character} has won!')
             return
         turn += 1
