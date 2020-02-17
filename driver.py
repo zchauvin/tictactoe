@@ -14,7 +14,7 @@ def get_is_human_x() -> bool:
             
 
 def play(is_human_x: bool) -> None:
-    players = [Human('x'), Computer('o') if is_human_x else Computer('x'), Human('o') ] 
+    players = [Human('x'), Computer('o')] if is_human_x else [Computer('x'), Human('o')] 
     board = Board(N)
     lines = board.get_lines()
     turn = 0
