@@ -1,4 +1,4 @@
-from typing import Optional, List, Sequence, Union
+from typing import List
 
 class Board:
     def __init__(self, n: int):

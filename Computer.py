@@ -1,6 +1,6 @@
 from Player import Player
 from Board import Board
-from typing import List, Tuple
+from typing import List
 
 class Computer(Player):
     def __init__(self, character: str, opponent_character: str):

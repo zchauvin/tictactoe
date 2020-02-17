@@ -11,5 +11,5 @@ This is a Human vs. Computer TicTacToe game. Because the Computer uses Minimax, 
 
 ## Tests 
 
-1. Follow steps 1 and to from Gameplay above. 
+1. Follow steps 1 and 2 from Gameplay above. 
 2. Run `python3 tester.py`.
