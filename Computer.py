@@ -1,6 +1,5 @@
 from Player import Player
 from Board import Board
-from random import choice
 from typing import List, Tuple
 
 class Computer(Player):
