@@ -10,6 +10,7 @@ class Board:
         for i in range(self.n):
             for j in range(self.n):
                 index = i * self.n + j
+                # show the character if present, otherwise the 1-indexed cell
                 result += f" {self.cells[index] or index + 1} "
                 if j != self.n - 1:
                     result += '|'
@@ -32,7 +33,7 @@ class Board:
     # zero-indexed
     def multi_set(self, cells: List[int], character: str) -> None:
         for cell in cells:
-            self.cells[cell] = character
+            self.set(cell, character)
     
     def get_lines(self) -> List[List[int]]: 
         lines: List[List[int]] = []
@@ -56,6 +57,7 @@ class Board:
     def is_valid_move(self, i: int) -> bool:
         return i >= 0 and i < self.n * self.n and not self.cells[i]
     
+    # Return all cells that do not have a character in them
     def get_available_cells(self) -> List[int]:
         return list(filter(lambda i: not self.cells[i], range(self.n * self.n)))
     
@@ -64,5 +66,6 @@ class Board:
         b.cells = self.cells.copy()
         return b
     
-    def is_full(self):
+    # Return whether or not the board is full of characters
+    def is_full(self) -> bool:
         return all(self.cells)

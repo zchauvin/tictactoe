@@ -4,6 +4,7 @@ from Human import Human
 
 N = 3
 
+# use human input to return a bool indicating x/o selection
 def get_is_human_x() -> bool:
     while True:
         selection = input('Would you like to play as x? y/n: ')
@@ -19,7 +20,9 @@ def play(is_human_x: bool) -> None:
     turn = 0
     print(board)
     while turn < N * N:
+        # alternate the turns between the two players
         player = players[turn % 2]
+        # take a move according to the player's selection
         board.set(player.get_move(board), player.character)
         print(board)
         if board.has_player_won(player.character):
